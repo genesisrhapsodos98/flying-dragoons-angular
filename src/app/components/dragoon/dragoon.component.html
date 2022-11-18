@@ -1,5 +1,5 @@
-<!-- <div *ngIf="dragoon" class="dragoon" [@flying]="{ value: null, params: { delay: delay }}"> -->
-<div *ngIf="dragoon" class="dragoon">
+<div *ngIf="dragoon" class="dragoon" [@flying]="{ value: null, params: { delay: delay }}">
+  <!-- <div *ngIf="dragoon" class="dragoon"> -->
   <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
     <img class="plane-propeller" src="/assets/img/spinner.png" draggable="false">
     <img class="plane-body" [src]="dragoon.imagePath" draggable="false">
