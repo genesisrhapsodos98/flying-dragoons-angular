@@ -12,6 +12,8 @@ export class SceneComponent {
   public readonly laneCount: number = 4;
   public readonly laneHeightPx: number = 215;
 
+  // TODO: Add code to load data from json file
+  // Note: Might need to use async/await to make sure the file is read before running this.randomizerService.loadDragoons
   dragoons: Dragoon[] = [
     {
       id: 1,

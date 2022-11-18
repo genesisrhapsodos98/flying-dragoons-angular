@@ -32,6 +32,7 @@ export class DragoonRandomizerService {
       this.started = false;
     }
 
+    // TODO: Add code to take random entries instead of first 4
     this.currentWave = this.dragoons.splice(0, amount);
   }
 }
