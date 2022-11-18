@@ -1,38 +1,34 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, concatMap, delay, of } from 'rxjs';
 import { Dragoon } from 'src/models/Dragoon';
 
 @Injectable()
 export class DragoonRandomizerService {
-  dragoons: Dragoon[] = [];
   loaded: boolean = false;
 
-  @Output() finished: EventEmitter<void> = new EventEmitter<void>();
-
-  currentWave$: BehaviorSubject<Dragoon[]> = new BehaviorSubject<Dragoon[]>([]);
-  get currentWave(): Dragoon[] {
-    return this.currentWave$.value;
+  dragoons$: BehaviorSubject<Dragoon[]> = new BehaviorSubject<Dragoon[]>([]);
+  get dragoons(): Dragoon[] {
+    return this.dragoons$.value;
   }
-  set currentWave(wave: Dragoon[]) {
-    this.currentWave$.next(wave);
+  set dragoons(value: Dragoon[]) {
+    this.dragoons$.next(value);
   }
 
   constructor() { }
 
   public loadDragoons(dragoons: Dragoon[]): void {
-    this.dragoons = dragoons;
+    this.dragoons = [...dragoons];
     this.loaded = true;
   }
 
-  public getDragoons(amount: number): void {
-    if (this.loaded && this.dragoons.length <= 0) {
-      this.finished.emit();
-      this.loaded = false;
-      this.currentWave = [];
-      return;
+  public getRandomDragoon(): Dragoon | null {
+    if (this.dragoons.length === 0) {
+      return null;
     }
-
-    // TODO: Add code to take random entries instead of first 4
-    this.currentWave = this.dragoons.splice(0, amount);
+    const index = Math.floor(Math.random() * this.dragoons.length);
+    const copyOfAllDragoons = this.dragoons;
+    const selectedDragoon = copyOfAllDragoons.splice(index, 1)[0];
+    this.dragoons = copyOfAllDragoons;
+    return selectedDragoon;
   }
 }

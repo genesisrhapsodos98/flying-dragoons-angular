@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Dragoon } from 'src/models/Dragoon';
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { animate, AnimationEvent, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'fd-dragoon',
@@ -8,22 +9,27 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
   styleUrls: ['./dragoon.component.scss'],
   animations: [
     trigger('flying', [
-      transition(':enter', [
-        animate("20s {{ delay }}ms", keyframes([
-          style({ transform: 'translateX(0)' }),
-          style({ transform: 'translateX(-190vw)' }),
-        ]))
-      ], { params: { delay: 0 } })
+      state('standby', style({ transform: 'translateX(0)' })),
+      state('flight', style({ transform: 'translateX(-190vw)' })),
+      transition('* => flight', [
+        animate("25s")
+      ])
     ])
   ]
 })
-export class DragoonComponent {
+export class DragoonComponent implements OnChanges {
   @Input() dragoon: Dragoon | null = null;
-  delay: number = 0;
+  @Output() flightCompleted: EventEmitter<void> = new EventEmitter<void>();
+
+  inFlight: boolean = false;
   showName: boolean = false;
 
-  constructor() {
-    this.delay = Math.random() * 5000;
+  constructor(private cd: ChangeDetectorRef) { }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['dragoon'].currentValue !== null) {
+      this.startFlight();
+    }
   }
 
   public displayName(): void {
@@ -32,5 +38,17 @@ export class DragoonComponent {
 
   public hideName(): void {
     this.showName = false;
+  }
+
+  public startFlight(): void {
+    this.inFlight = true;
+  }
+
+  public completeFlight(event: AnimationEvent): void {
+    if (event.toState === 'flight') {
+      this.inFlight = false;
+      this.cd.detectChanges();
+      this.flightCompleted.emit();
+    }
   }
 }
