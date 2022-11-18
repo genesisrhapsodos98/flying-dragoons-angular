@@ -2,9 +2,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Dragoon } from 'src/models/Dragoon';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DragoonRandomizerService {
   dragoons: Dragoon[] = [];
   loaded: boolean = false;

@@ -6,7 +6,8 @@ import { Dragoon } from 'src/models/Dragoon';
 @Component({
   selector: 'fd-scene',
   templateUrl: './scene.component.html',
-  styleUrls: ['./scene.component.scss']
+  styleUrls: ['./scene.component.scss'],
+  providers: [DragoonRandomizerService]
 })
 export class SceneComponent {
   public readonly laneCount: number = 4;

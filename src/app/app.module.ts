@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { LaneComponent } from './components/lane/lane.component';
 import { DragoonComponent } from './components/dragoon/dragoon.component';
 import { SceneComponent } from './components/scene/scene.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     LaneComponent,
     DragoonComponent,
-    SceneComponent
+    SceneComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,6 @@ import { SceneComponent } from './components/scene/scene.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [SceneComponent]
+  bootstrap: [MenuComponent]
 })
 export class AppModule { }
