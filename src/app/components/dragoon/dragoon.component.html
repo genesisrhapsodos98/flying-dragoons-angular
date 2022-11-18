@@ -1,0 +1,12 @@
+<div class="dragoon" *ngIf="dragoon" [@flying]>
+  <div class="plane">
+    <img class="plane-propeller" src="/assets/img/spinner.png">
+    <img class="plane-body" [src]="dragoon.imagePath">
+  </div>
+  <div class="banner">
+    <img class="banner-img" src="/assets/img/banner2.png">
+    <div class="banner-message">
+      {{ dragoon.message }}
+    </div>
+  </div>
+</div>
