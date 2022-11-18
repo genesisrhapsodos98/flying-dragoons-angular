@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, takeUntil, tap, timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
 import { Dragoon } from 'src/models/Dragoon';
@@ -12,7 +12,7 @@ const dragoonData: Dragoon[] = planeData as Dragoon[];
   styleUrls: ['./scene.component.scss'],
   providers: [DragoonRandomizerService]
 })
-export class SceneComponent {
+export class SceneComponent implements OnInit, OnDestroy {
   public readonly laneCount: number = 4;
   public readonly laneHeightPx: number = 215;
 

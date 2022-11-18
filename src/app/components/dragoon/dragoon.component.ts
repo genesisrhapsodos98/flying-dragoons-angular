@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Dragoon } from 'src/models/Dragoon';
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'fd-dragoon',
