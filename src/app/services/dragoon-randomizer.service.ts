@@ -7,7 +7,7 @@ import { Dragoon } from 'src/models/Dragoon';
 })
 export class DragoonRandomizerService {
   dragoons: Dragoon[] = [];
-  started: boolean = false;
+  loaded: boolean = false;
 
   @Output() finished: EventEmitter<void> = new EventEmitter<void>();
 
@@ -23,13 +23,15 @@ export class DragoonRandomizerService {
 
   public loadDragoons(dragoons: Dragoon[]): void {
     this.dragoons = dragoons;
-    this.started = true;
+    this.loaded = true;
   }
 
   public getDragoons(amount: number): void {
-    if (this.started && this.dragoons.length <= 0) {
+    if (this.loaded && this.dragoons.length <= 0) {
       this.finished.emit();
-      this.started = false;
+      this.loaded = false;
+      this.currentWave = [];
+      return;
     }
 
     // TODO: Add code to take random entries instead of first 4
