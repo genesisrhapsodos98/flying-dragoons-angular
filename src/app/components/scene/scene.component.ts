@@ -19,6 +19,8 @@ export class SceneComponent implements OnInit, OnDestroy {
   waveTimer: Observable<number> = timer(0, 25000).pipe(tap((val) => this.nextWave()), takeUntil(this.randomizerService.finished));
   subscriptions: Subscription[] = [];
 
+  lanes: any[] = [];
+
   constructor(private randomizerService: DragoonRandomizerService) { }
 
   ngOnInit(): void {
@@ -29,14 +31,11 @@ export class SceneComponent implements OnInit, OnDestroy {
 
   public nextWave(): void {
     this.randomizerService.getDragoons(this.laneCount);
-  }
-
-  public get lanes(): any[] {
     const lanes: any[] = [];
     for (let i = 0; i < this.laneCount; i++) {
       lanes.push({ id: i + 1, dragoon: this.randomizerService.currentWave[i] ?? null });
     }
-    return lanes;
+    this.lanes = lanes;
   }
 
   public ngOnDestroy(): void {

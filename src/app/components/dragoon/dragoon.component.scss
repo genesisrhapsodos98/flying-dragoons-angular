@@ -2,14 +2,21 @@
   .dragoon {
     position: relative;
     height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     max-width: 100vw;
-    left: 100vw;
+    // left: 110vw;
 
     .plane {
       position: relative;
       min-width: 250px;
       min-height: 215px;
       display: inline-block;
+
+      img {
+        user-select: none;
+      }
 
       .plane-propeller {
         z-index: 2;
@@ -23,6 +30,17 @@
         z-index: 3;
         position: relative;
         height: 200px;
+      }
+
+      .pilot-name {
+        z-index: 4;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: white;
       }
 
       @keyframes spinning {
@@ -49,13 +67,19 @@
         color: #000;
         padding-left: 3%;
         padding-right: 3%;
-        width: 75%;
-        left: 150px;
+        width: 700px;
+        left: 100px;
         top: 9px;
-        height: 165px;
+        height: 190px;
         display: flex;
         align-items: center;
-        font-family: 'Permanent Marker', sans-serif;
+
+        p {
+          text-align: center;
+          font-family: 'Permanent Marker', sans-serif;
+          font-size: 25px;
+          margin: auto;
+        }
       }
     }
   }

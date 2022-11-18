@@ -1,12 +1,16 @@
-<div class="dragoon" *ngIf="dragoon" [@flying]>
-  <div class="plane">
-    <img class="plane-propeller" src="/assets/img/spinner.png">
-    <img class="plane-body" [src]="dragoon.imagePath">
+<!-- <div *ngIf="dragoon" class="dragoon" [@flying]="{ value: null, params: { delay: delay }}"> -->
+<div *ngIf="dragoon" class="dragoon">
+  <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
+    <img class="plane-propeller" src="/assets/img/spinner.png" draggable="false">
+    <img class="plane-body" [src]="dragoon.imagePath" draggable="false">
+    <span *ngIf="showName" class="pilot-name">{{ dragoon.name }}</span>
   </div>
   <div class="banner">
-    <img class="banner-img" src="/assets/img/banner2.png">
+    <img class="banner-img" src="/assets/img/banner2.png" draggable="false">
     <div class="banner-message">
-      {{ dragoon.message }}
+      <p>
+        {{ dragoon.message }}
+      </p>
     </div>
   </div>
 </div>
