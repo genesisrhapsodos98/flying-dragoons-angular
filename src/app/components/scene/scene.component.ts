@@ -9,7 +9,7 @@ import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.se
 })
 export class SceneComponent implements OnInit {
   public readonly laneCount: number = 4;
-  public readonly laneHeightPx: number = 250;
+  public readonly laneHeightPx: number = 215;
 
   lanes: any[] = [];
 
