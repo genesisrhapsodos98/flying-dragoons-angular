@@ -28,7 +28,7 @@ export class DragoonComponent implements OnChanges {
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['dragoon'].currentValue !== null) {
-      // this.startFlight();
+      this.startFlight();
     }
   }
 
