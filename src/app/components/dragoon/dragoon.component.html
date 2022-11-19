@@ -1,12 +1,12 @@
 <div *ngIf="dragoon" class="dragoon" [@flying]="inFlight === true ? 'flight' : 'standby'"
   (@flying.done)="completeFlight($event)">
   <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
-    <img class="plane-propeller" src="/assets/img/spinner.png" draggable="false">
+    <img class="plane-propeller" src="assets/img/spinner.png" draggable="false">
     <img class="plane-body" [src]="dragoon.imagePath" draggable="false">
     <span *ngIf="showName" class="pilot-name">{{ dragoon.name }}</span>
   </div>
   <div class="banner">
-    <img class="banner-img" src="/assets/img/banner2.png" draggable="false">
+    <img class="banner-img" src="assets/img/banner2.png" draggable="false">
     <div class="banner-message">
       <p>
         {{ dragoon.message }}

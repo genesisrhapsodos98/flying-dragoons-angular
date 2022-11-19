@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { concatMap, delay, interval, Observable, of, Subscription, switchMap, takeUntil, tap, timer } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
 import { Dragoon } from 'src/models/Dragoon';
 
