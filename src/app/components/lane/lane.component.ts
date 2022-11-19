@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
 import { Dragoon } from 'src/models/dragoon';
@@ -12,9 +12,10 @@ import { DragoonComponent } from '../dragoon/dragoon.component';
 })
 export class LaneComponent implements AfterViewInit {
   @ViewChild(DragoonComponent) dragoonComponent!: DragoonComponent;
+  @Input() laneHeightPx: number = 215;
   dragoon: Dragoon | null = null;
 
-  constructor(private randomizerService: DragoonRandomizerService, private cd: ChangeDetectorRef) { }
+  constructor(private randomizerService: DragoonRandomizerService) { }
 
   ngAfterViewInit(): void {
     this.getNewDragoon();

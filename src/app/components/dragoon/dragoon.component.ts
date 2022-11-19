@@ -18,6 +18,7 @@ import { Dragoon } from 'src/models/dragoon';
 })
 export class DragoonComponent implements OnChanges {
   @Input() dragoon: Dragoon | null = null;
+  @Input() planeHeightPx: number = 215;
   @Output() flightCompleted: EventEmitter<void> = new EventEmitter<void>();
 
   inFlight: boolean = false;
@@ -27,7 +28,7 @@ export class DragoonComponent implements OnChanges {
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['dragoon'].currentValue !== null) {
-      this.startFlight();
+      // this.startFlight();
     }
   }
 
