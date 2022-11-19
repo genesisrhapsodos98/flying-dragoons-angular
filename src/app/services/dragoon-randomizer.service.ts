@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Dragoon } from 'src/models/dragoon';
 
+import { DragoonsService } from './dragoons.service';
+
 @Injectable()
 export class DragoonRandomizerService {
   loaded: boolean = false;
@@ -14,10 +16,8 @@ export class DragoonRandomizerService {
     this.dragoons$.next(value);
   }
 
-  constructor() { }
-
-  public loadDragoons(dragoons: Dragoon[]): void {
-    this.dragoons = [...dragoons];
+  constructor(private dragoonsService: DragoonsService) {
+    this.dragoons = this.dragoonsService.dragoons;
     this.loaded = true;
   }
 
