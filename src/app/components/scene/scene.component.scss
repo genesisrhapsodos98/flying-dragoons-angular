@@ -21,20 +21,20 @@
 
   @keyframes cycle {
     0% {
-      background-image: url("/assets/img/bg_day.png");
+      background-image: url("../../../assets/img/bg_day.png");
     }
 
     45% {
-      background-image: url("/assets/img/bg_dawn.png");
+      background-image: url("../../../assets/img/bg_dawn.png");
     }
 
     70% {
-      background-image: url("/assets/img/bg_dusk.png");
+      background-image: url("../../../assets/img/bg_dusk.png");
     }
 
     90%,
     100% {
-      background-image: url("/assets/img/bg_day.png");
+      background-image: url("../../../assets/img/bg_day.png");
     }
   }
 }
