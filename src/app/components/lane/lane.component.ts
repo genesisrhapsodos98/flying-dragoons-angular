@@ -1,7 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
-import { Dragoon } from 'src/models/Dragoon';
+import { Dragoon } from 'src/models/dragoon';
+
 import { DragoonComponent } from '../dragoon/dragoon.component';
 
 @Component({

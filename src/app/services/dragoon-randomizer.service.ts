@@ -1,6 +1,6 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
-import { BehaviorSubject, concatMap, delay, of } from 'rxjs';
-import { Dragoon } from 'src/models/Dragoon';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Dragoon } from 'src/models/dragoon';
 
 @Injectable()
 export class DragoonRandomizerService {

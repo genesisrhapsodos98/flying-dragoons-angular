@@ -1,7 +1,6 @@
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Dragoon } from 'src/models/Dragoon';
-import { animate, AnimationEvent, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { timer } from 'rxjs';
+import { Dragoon } from 'src/models/dragoon';
 
 @Component({
   selector: 'fd-dragoon',

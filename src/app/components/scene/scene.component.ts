@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
-import { Dragoon } from 'src/models/Dragoon';
-
 import planeData from 'src/assets/planes.json';
+import { Dragoon } from 'src/models/dragoon';
+
 const dragoonData: Dragoon[] = planeData as Dragoon[];
 
 @Component({

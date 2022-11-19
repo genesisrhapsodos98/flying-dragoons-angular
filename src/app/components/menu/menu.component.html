@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div class="menu-container">
+  <div class="menu-content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="menu-sidenav">
+    <fd-sidenav [menuItems]="menuItems"></fd-sidenav>
+  </div>
+</div>

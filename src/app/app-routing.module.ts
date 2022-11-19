@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { CreditsComponent } from './components/credits/credits.component';
+import { HangarComponent } from './components/hangar/hangar.component';
 import { SceneComponent } from './components/scene/scene.component';
 
 const routes: Routes = [
-  { path: '', component: SceneComponent }
+  { path: '', component: SceneComponent },
+  { path: 'planes', component: HangarComponent },
+  { path: 'credits', component: CreditsComponent },
 ];
 
 @NgModule({
