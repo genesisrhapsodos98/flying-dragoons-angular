@@ -16,17 +16,17 @@ export class MenuComponent implements OnInit {
     {
       label: 'Squadron',
       link: '/',
-      iconPath: '/assets/icons/flight.svg'
+      iconPath: 'assets/icons/flight.svg'
     },
     {
       label: 'Hangar',
       link: '/hangar',
-      iconPath: '/assets/icons/home.svg'
+      iconPath: 'assets/icons/home.svg'
     },
     {
       label: 'Credits',
       link: '/credits',
-      iconPath: '/assets/icons/groups.svg'
+      iconPath: 'assets/icons/groups.svg'
     },
   ]
 
