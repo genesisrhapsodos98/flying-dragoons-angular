@@ -1,3 +1,5 @@
+@import '../../../styles/colors.scss';
+
 :host {
   --plane-height: 190px;
 
@@ -41,44 +43,42 @@
         position: absolute;
         top: 50%;
         left: 20%;
-      }
 
-      .pilot-name {
-        display: inline-block;
-        border-radius: 100px;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background-color: white;
-        opacity: 75%;
-        width: 0;
-        animation: typing 1s forwards;
-        overflow: hidden;
+        .pilot-name {
+          display: inline-block;
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          background-color: white;
+          opacity: 90%;
+          width: 0;
+          animation: typing 0.5s forwards;
+          overflow: hidden;
 
-        text-align: center;
-        color: white;
-        font-family: "Gloria Hallelujah";
-        font-weight: lighter;
-        font-size: small;
-        letter-spacing: 3px;
-      }
-      
-      
-      @keyframes typing {
-        from { 
-          width: 0; 
-          background-color: rgb(255, 253, 113);
+          text-align: center;
+          color: white;
+          font-weight: lighter;
+          font-size: calc(var(--plane-height) / 12);
+          letter-spacing: calc(var(--plane-height) / 60);
+          border-radius: calc(var(--plane-height) / 12);
+
+          @keyframes typing {
+            from {
+              width: 0;
+              background-color: $yellow;
+            }
+
+            to {
+              width: 100%;
+              background-color: $selen-purple;
+            }
+          }
         }
-        to { 
-          width: 100%;
-          background-color: rgb(106, 43, 158);
-        }
       }
-
 
       @keyframes spinning {
-      
+
         100% {
           transform: rotate(360deg);
         }
@@ -111,11 +111,11 @@
         display: flex;
         align-items: center;
         user-select: text;
+        font-family: 'Handlee', sans-serif;
 
         p {
           text-align: center;
-          font-family: 'Permanent Marker', sans-serif;
-          font-size: calc(var(--plane-height) * 0.1);
+          font-size: calc(var(--plane-height) * 0.12);
           margin: auto;
           padding: 10px;
         }
