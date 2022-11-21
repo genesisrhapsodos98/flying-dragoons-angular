@@ -33,18 +33,49 @@
         height: var(--plane-height);
       }
 
-      .pilot-name {
+      .tag {
         z-index: 4;
         position: absolute;
         top: 50%;
-        left: 25%;
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 5px;
-        background-color: white;
+        left: 20%;
       }
 
+      .pilot-name {
+        display: inline-block;
+        border-radius: 100px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: white;
+        opacity: 75%;
+        width: 0;
+        animation: typing 1s forwards;
+        overflow: hidden;
+
+        text-align: center;
+        color: white;
+        font-family: "Gloria Hallelujah";
+        font-weight: lighter;
+        font-size: small;
+        letter-spacing: 3px;
+      }
+      
+      
+      @keyframes typing {
+        from { 
+          width: 0; 
+          background-color: rgb(255, 253, 113);
+        }
+        to { 
+          width: 100%;
+          background-color: rgb(106, 43, 158);
+        }
+      }
+
+
       @keyframes spinning {
+      
         100% {
           transform: rotate(360deg);
         }

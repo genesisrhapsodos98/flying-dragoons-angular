@@ -1,9 +1,10 @@
+
 <div *ngIf="dragoon" class="dragoon" [style.--plane-height]="planeHeightPx + 'px'"
   [@flying]="inFlight === true ? 'flight' : 'standby'" (@flying.done)="completeFlight($event)">
   <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
     <img class="plane-propeller" src="assets/img/spinner.png" draggable="false">
     <img class="plane-body" [src]="dragoon.imagePath" draggable="false">
-    <span *ngIf="showName" class="pilot-name">{{ dragoon.name }}</span>
+    <h2 class="tag"><span *ngIf="showName" class="pilot-name">{{ dragoon.name }}</span></h2>
   </div>
   <div class="banner">
     <img class="banner-img" src="assets/img/banner2.png" draggable="false">

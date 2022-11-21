@@ -22,19 +22,23 @@
 
   @keyframes cycle {
     0% {
+      opacity: 1;
       background-image: url("../../../assets/img/bg_day.png");
     }
 
     45% {
+      opacity: 1;
       background-image: url("../../../assets/img/bg_dawn.png");
     }
 
     70% {
+      opacity: 1;
       background-image: url("../../../assets/img/bg_dusk.png");
     }
 
     90%,
     100% {
+      opacity:1;
       background-image: url("../../../assets/img/bg_day.png");
     }
   }
