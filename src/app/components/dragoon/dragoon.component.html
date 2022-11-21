@@ -3,7 +3,7 @@
   <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
     <img *ngIf="!inHangar" class="plane-propeller" src="assets/img/spinner.png" draggable="false">
     <img class="plane-body" [src]="dragoon.imagePath" draggable="false">
-    <span *ngIf="showName" class="pilot-name">{{ dragoon.name }}</span>
+    <span class="tag"> <span *ngIf="showName" class="pilot-name">{{ dragoon.name }}</span></span>
   </div>
   <div class="banner">
     <img class="banner-img" src="assets/img/banner2.png" draggable="false">
