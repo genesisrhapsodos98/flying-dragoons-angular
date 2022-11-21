@@ -14,16 +14,19 @@ const dragoons: Dragoon[] = dragoonJson as Dragoon[];
 export class MenuComponent implements OnInit {
   menuItems: MenuItem[] = [
     {
-      label: 'Flight',
-      link: '/'
+      label: 'Squadron',
+      link: '/',
+      iconPath: '/assets/icons/flight.svg'
     },
     {
-      label: 'Planes',
-      link: '/planes'
+      label: 'Hangar',
+      link: '/hangar',
+      iconPath: '/assets/icons/home.svg'
     },
     {
       label: 'Credits',
-      link: '/credits'
+      link: '/credits',
+      iconPath: '/assets/icons/groups.svg'
     },
   ]
 

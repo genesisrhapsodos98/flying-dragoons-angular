@@ -12,7 +12,7 @@ import { DragoonComponent } from '../dragoon/dragoon.component';
 })
 export class LaneComponent implements AfterViewInit {
   @ViewChild(DragoonComponent) dragoonComponent!: DragoonComponent;
-  @Input() laneHeightPx: number = 215;
+  @Input() laneHeightPx: number = 190;
   dragoon: Dragoon | null = null;
 
   constructor(private randomizerService: DragoonRandomizerService) { }

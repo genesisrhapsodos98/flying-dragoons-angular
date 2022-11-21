@@ -7,7 +7,7 @@ import { SceneComponent } from './components/scene/scene.component';
 
 const routes: Routes = [
   { path: '', component: SceneComponent },
-  { path: 'planes', component: HangarComponent },
+  { path: 'hangar', component: HangarComponent },
   { path: 'credits', component: CreditsComponent },
 ];
 

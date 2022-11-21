@@ -1,5 +1,5 @@
 :host {
-  --plane-height: 215px;
+  --plane-height: 190px;
 
   .dragoon {
     position: relative;
@@ -8,7 +8,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     max-width: 100vw;
-    left: 110vw;
+
+    &:not(.in-hangar) {
+      left: 100vw;
+    }
 
     .plane {
       position: relative;
@@ -53,10 +56,11 @@
 
     .banner {
       z-index: 1;
-      left: calc(var(--plane-height) / -10.75);
+      left: calc(var(--plane-height) / -7);
       margin-left: 0px;
       position: relative;
       display: inline-block;
+      user-select: none;
 
       .banner-img {
         position: relative;
@@ -75,11 +79,12 @@
         height: var(--plane-height);
         display: flex;
         align-items: center;
+        user-select: text;
 
         p {
           text-align: center;
           font-family: 'Permanent Marker', sans-serif;
-          font-size: 25px;
+          font-size: calc(var(--plane-height) * 0.1);
           margin: auto;
           padding: 10px;
         }

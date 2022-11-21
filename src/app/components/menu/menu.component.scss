@@ -8,13 +8,13 @@
     min-height: 100vh;
 
     .menu-content {
-      width: 90%
+      width: calc(100vw - 96px);
     }
 
     .menu-sidenav {
       height: 100vh;
       background-color: $dark-grey;
-      width: 10%;
+      min-width: 75px;
       position: fixed;
       right: 0;
     }
