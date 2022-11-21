@@ -1,1 +1,6 @@
-<p>hangar works!</p>
+<div class="plane-container" *ngFor="let dragoon of dragoons">
+  <div class="pilot-name">
+    {{ dragoon.name }}
+  </div>
+  <fd-dragoon [dragoon]="dragoon" [planeHeightPx]="planeHeightPx" [inHangar]="true"></fd-dragoon>
+</div>

@@ -17,7 +17,7 @@ export class DragoonRandomizerService {
   }
 
   constructor(private dragoonsService: DragoonsService) {
-    this.dragoons = this.dragoonsService.dragoons;
+    this.dragoons = [...this.dragoonsService.dragoons];
     this.loaded = true;
   }
 

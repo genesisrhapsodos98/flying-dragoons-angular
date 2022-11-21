@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .plane-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 50px 0;
+
+    .pilot-name {
+      width: 10%;
+      text-align: center;
+    }
+
+    fd-dragoon {
+      width: 90%;
+    }
+  }
+}

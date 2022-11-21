@@ -7,11 +7,18 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    height: 100%;
+    border-left: 1px solid $selen-purple;
 
     .nav-item {
-      padding: 10px 20px;
+      padding: 25px 0px 25px 10px;
       color: white;
       cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        background-color: rgba($selen-purple, 0.5);
+      }
 
       &.active {
         background-color: $selen-purple;
@@ -21,6 +28,20 @@
         font-size: 20px;
         font-family: sans-serif;
         text-decoration: none;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .nav-icon {
+          height: 45px;
+          color: white;
+          padding: 0 25px 0 15px;
+        }
+
+        span {
+          padding-right: 40px;
+        }
 
         &:visited {
           color: unset;
