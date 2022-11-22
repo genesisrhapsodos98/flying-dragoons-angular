@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DragoonViewerService } from 'src/app/services/dragoon-viewer.service';
 import { DragoonsService } from 'src/app/services/dragoons.service';
 import { Dragoon } from 'src/models/dragoon';
 
@@ -10,9 +11,13 @@ import { Dragoon } from 'src/models/dragoon';
 export class HangarComponent implements OnInit {
   dragoons: Dragoon[] = [];
   planeHeightPx: number = 250;
-  constructor(private dragoonsService: DragoonsService) { }
+  constructor(private dragoonsService: DragoonsService, private viewerService: DragoonViewerService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.dragoons = this.dragoonsService.dragoons;
+  }
+
+  public openViewer(dragoon: Dragoon): void {
+    this.viewerService.openViewer(dragoon);
   }
 }

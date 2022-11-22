@@ -3,6 +3,7 @@
     {{ dragoon.name }}
   </div>
   <div [style.height.px]="planeHeightPx">
-    <fd-dragoon [dragoon]="dragoon" [planeHeightPx]="planeHeightPx" [inHangar]="true"></fd-dragoon>
+    <fd-dragoon [dragoon]="dragoon" [planeHeightPx]="planeHeightPx" [inHangar]="true" (click)="openViewer(dragoon)">
+    </fd-dragoon>
   </div>
 </div>

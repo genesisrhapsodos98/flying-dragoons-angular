@@ -10,6 +10,7 @@ import { SceneComponent } from './components/scene/scene.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HangarComponent } from './components/hangar/hangar.component';
 import { CreditsComponent } from './components/credits/credits.component';
+import { DragoonViewerComponent } from './components/dragoon-viewer/dragoon-viewer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreditsComponent } from './components/credits/credits.component';
     MenuComponent,
     SidenavComponent,
     HangarComponent,
-    CreditsComponent
+    CreditsComponent,
+    DragoonViewerComponent
   ],
   imports: [
     BrowserModule,

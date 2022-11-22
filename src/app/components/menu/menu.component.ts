@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DragoonViewerService } from 'src/app/services/dragoon-viewer.service';
 import { DragoonsService } from 'src/app/services/dragoons.service';
 import dragoonJson from 'src/assets/planes.json';
 import { Dragoon } from 'src/models/dragoon';
@@ -30,7 +31,7 @@ export class MenuComponent implements OnInit {
     },
   ]
 
-  constructor(private dragoonsService: DragoonsService) { }
+  constructor(private dragoonsService: DragoonsService, public viewerService: DragoonViewerService) { }
 
   ngOnInit(): void {
     this.dragoonsService.loadDragoons(dragoons);

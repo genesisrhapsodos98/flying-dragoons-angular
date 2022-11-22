@@ -11,7 +11,7 @@ import { Dragoon } from 'src/models/dragoon';
       state('standby', style({ transform: 'translateX(0)' })),
       state('flight', style({ transform: 'translateX(-190vw)' })),
       transition('* => flight', [
-        animate("25s")
+        animate("20s")
       ])
     ])
   ]
