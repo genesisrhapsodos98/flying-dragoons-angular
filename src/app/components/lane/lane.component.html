@@ -1,1 +1,2 @@
-<fd-dragoon [dragoon]="dragoon" [planeHeightPx]="laneHeightPx" (flightCompleted)="getNewDragoon()"></fd-dragoon>
+<fd-dragoon *ngFor="let dragoon of dragoons" [dragoon]="dragoon" [planeHeightPx]="laneHeightPx"
+  (flightCompleted)="removeDragoon($event)"></fd-dragoon>

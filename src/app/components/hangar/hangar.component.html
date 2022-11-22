@@ -2,5 +2,7 @@
   <div class="pilot-name">
     {{ dragoon.name }}
   </div>
-  <fd-dragoon [dragoon]="dragoon" [planeHeightPx]="planeHeightPx" [inHangar]="true"></fd-dragoon>
+  <div [style.height.px]="planeHeightPx">
+    <fd-dragoon [dragoon]="dragoon" [planeHeightPx]="planeHeightPx" [inHangar]="true"></fd-dragoon>
+  </div>
 </div>

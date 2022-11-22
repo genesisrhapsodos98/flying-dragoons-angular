@@ -9,6 +9,7 @@
 
     .menu-content {
       width: calc(100vw - 96px);
+      overflow-x: scroll;
     }
 
     .menu-sidenav {

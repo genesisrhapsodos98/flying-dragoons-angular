@@ -1,5 +1,5 @@
 <div *ngIf="dragoon" class="dragoon" [class.in-hangar]="inHangar" [style.--plane-height]="planeHeightPx + 'px'"
-  [@flying]="inFlight === true ? 'flight' : 'standby'" (@flying.done)="completeFlight($event)">
+  [@flying]="inFlight ? 'flight' : 'standby'" (@flying.done)="completeFlight($event)">
   <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
     <img *ngIf="!inHangar" class="plane-propeller" src="assets/img/spinner.png" draggable="false">
     <img class="plane-body" [src]="dragoon.imagePath" draggable="false">

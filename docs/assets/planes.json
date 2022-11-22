@@ -70,5 +70,47 @@
     "message": "Kok Ozen",
     "name": "KokOzen",
     "imagePath": "assets/img/KokOzen.png"
+  },
+  {
+    "id": 13,
+    "message": "Test message 13",
+    "name": "Test pilot 13",
+    "imagePath": "assets/img/Acxelion.png"
+  },
+  {
+    "id": 14,
+    "message": "Test message 14",
+    "name": "Test pilot 14",
+    "imagePath": "assets/img/TheAntiYuu.png"
+  },
+  {
+    "id": 15,
+    "message": "Test message 15",
+    "name": "Test pilot 15",
+    "imagePath": "assets/img/Squish.png"
+  },
+  {
+    "id": 16,
+    "message": "Test message 16",
+    "name": "Test pilot 16",
+    "imagePath": "assets/img/Lizard.png"
+  },
+  {
+    "id": 17,
+    "message": "Test message 17",
+    "name": "Test pilot 17",
+    "imagePath": "assets/img/Guro Machine.png"
+  },
+  {
+    "id": 18,
+    "message": "Test message 18",
+    "name": "Test pilot 18",
+    "imagePath": "assets/img/Gaston Mauricio Aguilar.png"
+  },
+  {
+    "id": 19,
+    "message": "Test message 19",
+    "name": "Test pilot 19",
+    "imagePath": "assets/img/zecilia.png"
   }
 ]

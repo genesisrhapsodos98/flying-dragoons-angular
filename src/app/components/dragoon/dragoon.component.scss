@@ -4,12 +4,11 @@
   --plane-height: 190px;
 
   .dragoon {
-    position: relative;
+    position: absolute;
     height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    max-width: 100vw;
 
     &:not(.in-hangar) {
       left: 100vw;

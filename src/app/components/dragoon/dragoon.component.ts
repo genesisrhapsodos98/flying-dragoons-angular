@@ -1,5 +1,5 @@
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dragoon } from 'src/models/dragoon';
 
 @Component({
@@ -16,20 +16,20 @@ import { Dragoon } from 'src/models/dragoon';
     ])
   ]
 })
-export class DragoonComponent implements OnChanges {
+export class DragoonComponent implements OnInit {
   @Input() dragoon: Dragoon | null = null;
   @Input() planeHeightPx: number = 190;
   @Input() inHangar: boolean = false;
-  @Output() flightCompleted: EventEmitter<void> = new EventEmitter<void>();
+  @Output() flightCompleted: EventEmitter<Dragoon> = new EventEmitter<Dragoon>();
 
   inFlight: boolean = false;
   showName: boolean = false;
 
   constructor(private cd: ChangeDetectorRef) { }
 
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (!this.inHangar && changes['dragoon'].currentValue !== null) {
-      this.startFlight();
+  ngOnInit(): void {
+    if (!this.inHangar) {
+      this.inFlight = true;
     }
   }
 
@@ -41,15 +41,12 @@ export class DragoonComponent implements OnChanges {
     this.showName = false;
   }
 
-  public startFlight(): void {
-    this.inFlight = true;
-  }
-
   public completeFlight(event: AnimationEvent): void {
-    if (event.toState === 'flight') {
-      this.inFlight = false;
-      this.cd.detectChanges();
-      this.flightCompleted.emit();
+    if (!this.dragoon) {
+      return;
     }
+
+    this.cd.detectChanges();
+    this.flightCompleted.emit(this.dragoon);
   }
 }
