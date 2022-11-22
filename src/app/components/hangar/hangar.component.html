@@ -1,8 +1,8 @@
-<div class="plane-container" *ngFor="let dragoon of dragoons">
+<div class="dragoon-container" *ngFor="let dragoon of dragoons">
   <div class="pilot-name">
     {{ dragoon.name }}
   </div>
-  <div [style.height.px]="planeHeightPx">
+  <div class="plane-container" [style.height.px]="planeHeightPx">
     <fd-dragoon [dragoon]="dragoon" [planeHeightPx]="planeHeightPx" [inHangar]="true" (click)="openViewer(dragoon)">
     </fd-dragoon>
   </div>

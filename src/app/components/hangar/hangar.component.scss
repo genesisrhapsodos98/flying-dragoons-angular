@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
 
-  .plane-container {
+  .dragoon-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -13,8 +13,12 @@
       text-align: center;
     }
 
-    fd-dragoon {
-      width: 90%;
+    .plane-container {
+      cursor: pointer;
+
+      fd-dragoon {
+        width: 90%;
+      }
     }
   }
 }
