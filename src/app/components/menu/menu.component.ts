@@ -10,7 +10,8 @@ const dragoons: Dragoon[] = dragoonJson as Dragoon[];
 @Component({
   selector: 'fd-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+
 })
 export class MenuComponent implements OnInit {
   menuItems: MenuItem[] = [

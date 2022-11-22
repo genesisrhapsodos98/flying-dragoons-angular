@@ -1,12 +1,16 @@
-<div class="panel">
-  <div class="header">
-    <button (click)="closeViewer()">
-      <img src="assets/icons/close.svg">
-    </button>
-  </div>
-  <div class="body">
-    <div class="dragoon-container">
-      <img [src]="viewerService.dragoon?.imagePath">
+<div class="cover" (click)="closeViewer()">
+  <div class="panel" (click)="$event.stopPropagation()" (mouseenter)="showHeader = true"
+    (mouseleave)="showHeader = false">
+    <div class="body">
+      <div class="media">
+        <img [src]="viewerService.dragoon?.imagePath" draggable="false">
+      </div>
+    </div>
+    <div *ngIf="showHeader" class="header" [@fadeInOut]>
+      <span class="pilot-name">{{ viewerService.dragoon?.name }}</span>
+      <button (click)="closeViewer()">
+        <img src="assets/icons/close.svg" draggable="false">
+      </button>
     </div>
   </div>
 </div>
