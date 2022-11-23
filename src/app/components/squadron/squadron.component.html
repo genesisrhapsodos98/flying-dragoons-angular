@@ -1,0 +1,5 @@
+<div *ngIf="randomizerService.loaded" class="lane-container">
+  <fd-selen-lane [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx" [inFlight]="selenInFlight">
+  </fd-selen-lane>
+  <fd-lane *ngFor="let lane of lanes" [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx"></fd-lane>
+</div>

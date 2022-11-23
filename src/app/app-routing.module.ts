@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CreditsComponent } from './components/credits/credits.component';
 import { HangarComponent } from './components/hangar/hangar.component';
-import { SceneComponent } from './components/scene/scene.component';
+import { SquadronComponent } from './components/squadron/squadron.component';
 
 const routes: Routes = [
-  { path: '', component: SceneComponent },
+  { path: '', component: SquadronComponent },
   { path: 'hangar', component: HangarComponent },
   { path: 'credits', component: CreditsComponent },
 ];
