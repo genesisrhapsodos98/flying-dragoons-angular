@@ -1,6 +1,8 @@
 :host {
   display: flex;
   flex-direction: column;
+  background-image: url('../../../assets/props/background/bg2.png');
+  background-attachment: fixed;
 
   .dragoon-container {
     display: flex;
@@ -10,8 +12,10 @@
 
     .pilot-name {
       font-size: 25px;
-      padding: 15px 0;
+      font-weight: 700;
+      color: white;
       text-align: left;
+      padding: 15px 0;
     }
 
     .plane-container {
