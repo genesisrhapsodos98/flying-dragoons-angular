@@ -63,7 +63,7 @@
     "id": 11,
     "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient monte",
     "name": "Atlas Brooks",
-    "imagePath": "assets/img/Atlas Brooks.png"
+    "imagePath": "assets/img/Atlas_Brooks.png"
   },
   {
     "id": 12,
@@ -99,13 +99,13 @@
     "id": 17,
     "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentes",
     "name": "Guro Machine",
-    "imagePath": "assets/img/Guro Machine.png"
+    "imagePath": "assets/img/Guro_Machine.png"
   },
   {
     "id": 18,
     "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
     "name": "Gaston Mauricio Aguilar",
-    "imagePath": "assets/img/Gaston Mauricio Aguilar.png"
+    "imagePath": "assets/img/Gaston_Mauricio_Aguilar.png"
   },
   {
     "id": 19,
