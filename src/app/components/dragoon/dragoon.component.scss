@@ -24,15 +24,16 @@
       }
 
       .plane-propeller {
-        z-index: 2;
+        z-index: 3;
         position: absolute;
         height: calc(var(--plane-height) / 2.15);
         top: 40%;
-        animation: spinning 0.2s linear infinite;
+        left: -4%;
+        opacity: 50%;
       }
 
       .plane-body {
-        z-index: 3;
+        z-index: 2;
         position: relative;
         height: var(--plane-height);
       }
