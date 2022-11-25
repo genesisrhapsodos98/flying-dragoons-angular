@@ -1,19 +1,21 @@
 <div *ngIf="randomizerService.loaded" class="lane-container">
-  <div class="background">
-    <img class="sun" src="assets/props/background/sun.gif">
-    <img *ngFor="let cloud of farBackgroundClouds" class="far-background-cloud" [src]="cloud.imagePath"
-      [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
-      [@farBackgroundCloud] (@farBackgroundCloud.done)="removeFarBackgroundCloud(cloud)">
-    <img *ngFor="let cloud of backgroundClouds" class="background-cloud" [src]="cloud.imagePath"
-      [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
-      [@backgroundCloud] (@backgroundCloud.done)="removeBackgroundCloud(cloud)">
-  </div>
-  <div class="foreground">
-    <img *ngFor="let cloud of foregroundClouds" class="foreground-cloud" [src]="cloud.imagePath"
-      [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
-      [@foregroundCloud] (@foregroundCloud.done)="removeForegroundCloud(cloud)">
-  </div>
+
+  <!-- Background -->
+  <img class="sun" src="assets/props/background/sun.gif">
+  <img *ngFor="let cloud of farBackgroundClouds" class="far-background-cloud" [src]="cloud.imagePath"
+    [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
+    [@farBackgroundCloud] (@farBackgroundCloud.done)="removeFarBackgroundCloud(cloud)">
+  <img *ngFor="let cloud of backgroundClouds" class="background-cloud" [src]="cloud.imagePath"
+    [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
+    [@backgroundCloud] (@backgroundCloud.done)="removeBackgroundCloud(cloud)">
+
+  <!-- Lanes -->
   <fd-selen-lane [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx" [inFlight]="selenInFlight">
   </fd-selen-lane>
   <fd-lane *ngFor="let lane of lanes" [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx"></fd-lane>
+
+  <!-- Foreground -->
+  <img *ngFor="let cloud of foregroundClouds" class="foreground-cloud" [src]="cloud.imagePath"
+    [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
+    [@foregroundCloud] (@foregroundCloud.done)="removeForegroundCloud(cloud)">
 </div>

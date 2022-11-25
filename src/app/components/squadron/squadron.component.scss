@@ -1,11 +1,14 @@
 :host {
   display: block;
-  width: 100%;
+  width: calc(100vw - 96px);
   height: 100%;
-  // background-image: url("../../../assets/props/background/bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation-delay: 10s;
+
+  z-index: 0;
+  background-image: url("../../../assets/props/background/bgfull.png");
+  background-repeat: repeat-x;
+  background-size: auto 100vh;
+  animation: background-slide 60s linear infinite;
+  position: absolute;
   overflow: hidden;
 
   .lane-container {
@@ -15,58 +18,41 @@
     width: 100%;
     height: 100%;
 
-    .background {
+    .sun {
       z-index: 0;
-      background-image: url("../../../assets/props/background/bgfull.png");
-      background-repeat: repeat-x;
-      background-size: auto 100vh;
-      animation: background-slide 60s linear infinite;
+      width: 300px;
       position: absolute;
-      width: calc(100vw - 96px);
-      height: 100%;
-      overflow: hidden;
-
-      .sun {
-        width: 300px;
-        position: absolute;
-        animation: sun-slide 5s linear;
-        right: 40px;
-        top: 40px;
-      }
-
-      .far-background-cloud,
-      .background-cloud {
-        position: absolute;
-        opacity: 0.95;
-      }
-
-      @keyframes background-slide {
-        from {
-          background-position-x: 0;
-        }
-
-        to {
-          background-position-x: calc(100vh * (7012 / 2480));
-        }
-      }
+      animation: sun-slide 5s linear;
+      right: 40px;
+      top: 40px;
     }
 
-    .foreground {
-      z-index: 2;
+    .far-background-cloud,
+    .background-cloud {
+      z-index: 0;
       position: absolute;
-      width: calc(100vw - 96px);
-      height: 100%;
-      overflow: hidden;
+      opacity: 0.95;
+    }
 
-      .foreground-cloud {
-        position: absolute;
-        opacity: 0.95;
-      }
+    .foreground-cloud {
+      position: absolute;
+      opacity: 0.95;
+      z-index: 2;
     }
 
     fd-selen-lane,
     fd-lane {
       z-index: 1;
+    }
+
+    @keyframes background-slide {
+      from {
+        background-position-x: 0;
+      }
+
+      to {
+        background-position-x: calc(100vh * (7012 / 2480));
+      }
     }
   }
 }
