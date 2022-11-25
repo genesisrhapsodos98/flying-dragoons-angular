@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnDestroy, ViewChild } from '@angular/core';
 import { of, repeat, Subscription, switchMap, timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
+import Utils from 'src/app/utils/utils';
 import { Dragoon } from 'src/models/dragoon';
 
 import { DragoonComponent } from '../dragoon/dragoon.component';
@@ -20,11 +21,11 @@ export class LaneComponent implements AfterViewInit, OnDestroy {
 
   public ngAfterViewInit(): void {
     // First plane delay
-    timer(this.getRandomDelay(0, 5000)).subscribe(() => {
+    timer(Utils.getRandomDelay(0, 5000)).subscribe(() => {
       this.addDragoon();
 
       // Delay between planes
-      this.intervalSubscription = of(null).pipe(switchMap(() => timer(this.getRandomDelay(7000, 10000))), repeat()).subscribe(() => this.addDragoon());
+      this.intervalSubscription = of(null).pipe(switchMap(() => timer(Utils.getRandomDelay(7000, 10000))), repeat()).subscribe(() => this.addDragoon());
     });
 
   }
@@ -44,9 +45,5 @@ export class LaneComponent implements AfterViewInit, OnDestroy {
 
   public removeDragoon(removedDragoon: Dragoon): void {
     this.dragoons = [...this.dragoons.filter(dragoon => dragoon !== removedDragoon)];
-  }
-
-  private getRandomDelay(minMs: number, maxMs: number): number {
-    return Math.random() * (maxMs - minMs) + minMs;
   }
 }

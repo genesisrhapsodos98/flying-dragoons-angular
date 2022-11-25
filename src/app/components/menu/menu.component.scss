@@ -10,6 +10,7 @@
     .menu-content {
       width: calc(100vw - 96px);
       overflow-x: scroll;
+      z-index: 0;
     }
 
     .menu-sidenav {
@@ -19,6 +20,7 @@
       position: fixed;
       right: 0;
       box-shadow: 0 0 30px 0 rgba($selen-purple, 0.3);
+      z-index: 1;
     }
   }
 }
