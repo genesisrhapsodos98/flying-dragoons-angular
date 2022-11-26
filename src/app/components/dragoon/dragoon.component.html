@@ -12,7 +12,7 @@
   <div class="banner">
     <img class="banner-img" src="assets/props/banner.png" draggable="false">
     <div class="banner-message">
-      <p>
+      <p [ngClass]="{ 'scroll': inHangar, 'ellipsis': !inHangar }">
         {{ dragoon.message }}
       </p>
     </div>

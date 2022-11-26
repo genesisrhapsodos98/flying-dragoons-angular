@@ -118,7 +118,22 @@
           text-align: center;
           font-size: calc(var(--plane-height) * 0.12);
           margin: auto;
-          padding: 10px;
+          width: calc(100% - 20px);
+          max-height: calc(var(--plane-height) - 20px);
+          box-sizing: border-box;
+          // padding: 10px;
+
+          &.ellipsis {
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+          }
+
+          &.scroll {
+            overflow: scroll;
+          }
         }
       }
     }
