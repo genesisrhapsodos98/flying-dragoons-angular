@@ -1,6 +1,15 @@
-<div class="selen-lane" [style.height.px]="laneHeightPx">
+<div class="selen-lane" [style.height.px]="laneHeightPx" [style.--plane-height]="laneHeightPx + 'px'">
   <div class="selen" [@flying]="inFlight ? 'flight' : 'standby'">
     <img class="selen-prop" src="assets/props/selen-plane.gif">
     <img class="ember-prop" src="assets/props/ember.gif">
+  </div>
+  <div class="hbd-plane-prop" [@slowFlying]="inFlight ? 'flight' : 'standby'">
+    <div class="hbd-plane">
+      <img class="hbd-plane-propeller" src="assets/props/spinner.gif" draggable="false">
+      <img class="hbd-plane-body" src="assets/props/hbd-plane.png" draggable="false">
+    </div>
+    <div class="hbd-banner">
+      <img class="hbd-banner-img" src="assets/props/hbd-banner.png" draggable="false">
+    </div>
   </div>
 </div>

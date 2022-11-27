@@ -12,6 +12,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       transition('* => flight', [
         animate("10s")
       ])
+    ]),
+    trigger('slowFlying', [
+      state('standby', style({ transform: 'translateX(0)' })),
+      state('flight', style({ transform: 'translateX(-190vw)' })),
+      transition('* => flight', [
+        animate("20s 1s")
+      ])
     ])
   ]
 })

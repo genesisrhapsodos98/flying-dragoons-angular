@@ -1,22 +1,65 @@
 :host {
+  --plane-height: 190px;
+
   position: absolute;
   width: 100vw;
 
   .selen {
-    position: relative;
-    height: 100%;
+    position: absolute;
+    height: var(--plane-height);
     left: 100vw;
 
     .selen-prop {
       position: absolute;
-      height: 100%;
+      height: var(--plane-height);
     }
 
     .ember-prop {
       position: absolute;
-      height: 80%;
+      height: calc(var(--plane-height) * 0.8);
       left: 250px;
       top: -95px;
+    }
+  }
+
+  .hbd-plane-prop {
+    position: relative;
+    height: var(--plane-height);
+    left: 100vw;
+
+    .hbd-plane {
+      position: relative;
+      min-height: var(--plane-height);
+      display: inline-block;
+
+      .hbd-plane-propeller {
+        z-index: 3;
+        position: absolute;
+        height: calc(var(--plane-height) / 2.15);
+        top: 40%;
+        left: -4%;
+        opacity: 50%;
+      }
+
+      .hbd-plane-body {
+        z-index: 2;
+        position: relative;
+        height: var(--plane-height);
+      }
+    }
+
+    .hbd-banner {
+      z-index: 1;
+      left: calc(var(--plane-height) / -7);
+      margin-left: 0px;
+      position: relative;
+      display: inline-block;
+      user-select: none;
+
+      .hbd-banner-img {
+        position: relative;
+        height: var(--plane-height);
+      }
     }
   }
 }

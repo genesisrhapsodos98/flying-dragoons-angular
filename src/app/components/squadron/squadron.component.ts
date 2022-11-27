@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { of, repeat, Subscription, switchMap, timer } from 'rxjs';
+import { Howl } from 'howler';
+import { filter, of, repeat, Subscription, switchMap, timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
 import { HintService } from 'src/app/services/hint.service';
 import Utils from 'src/app/utils/utils';
@@ -50,12 +51,16 @@ export class SquadronComponent implements OnInit, OnDestroy {
 
   private propGenerators: Subscription[] = [];
 
+  private audios: Howl[] = [];
+
   lanes: any[] = [];
 
   constructor(public randomizerService: DragoonRandomizerService, public hintService: HintService) { }
 
   public ngOnInit(): void {
-    // this.start();
+    if (!this.hintService.showHint) {
+      this.start();
+    }
 
     // Initial far background clouds
     for (let i = 0; i < 25; i++) {
@@ -63,19 +68,19 @@ export class SquadronComponent implements OnInit, OnDestroy {
     }
 
     const farBackgroundCloudGenerator = of(null)
-      .pipe(switchMap(() => timer(Utils.getRandomDelay(5000, 10000))), repeat())
+      .pipe(switchMap(() => timer(Utils.getRandomDelay(5000, 10000))), repeat(), filter(() => !document.hidden))
       .subscribe(() => this.farBackgroundClouds.push(this.getCloud(3, 5)));
 
     const backgroundCloudGenerator = of(null)
-      .pipe(switchMap(() => timer(Utils.getRandomDelay(3000, 5000))), repeat())
+      .pipe(switchMap(() => timer(Utils.getRandomDelay(3000, 5000))), repeat(), filter(() => !document.hidden))
       .subscribe(() => this.backgroundClouds.push(this.getCloud(10, 20)));
 
     const foregroundCloudGenerator = of(null)
-      .pipe(switchMap(() => timer(Utils.getRandomDelay(1000, 10000))), repeat())
+      .pipe(switchMap(() => timer(Utils.getRandomDelay(1000, 10000))), repeat(), filter(() => !document.hidden))
       .subscribe(() => this.foregroundClouds.push(this.getCloud(30, 40)));
 
     const mascotGenerator = of(null)
-      .pipe(switchMap(() => timer(Utils.getRandomDelay(10000, 15000))), repeat())
+      .pipe(switchMap(() => timer(Utils.getRandomDelay(7000, 12000))), repeat(), filter(() => !document.hidden))
       .subscribe(() => this.mascots.push(this.getMascot(10, 15)));
 
     this.propGenerators.push(farBackgroundCloudGenerator, backgroundCloudGenerator, foregroundCloudGenerator, mascotGenerator);
@@ -89,7 +94,21 @@ export class SquadronComponent implements OnInit, OnDestroy {
   public start(): void {
     this.selenInFlight = true;
 
+
+    const bgMusic = new Howl({ src: 'assets/audio/bg.mp3', volume: 0.4 });
+    const jetSfx = new Howl({ src: 'assets/audio/jet.mp3', volume: 0.1 });
+    const droneSfx = new Howl({ src: 'assets/audio/drone.mp3', volume: 0.05, loop: true });
+
+    this.audios.push(jetSfx, droneSfx, bgMusic);
+
+    jetSfx.play();
+    bgMusic.play();
+
     timer(1000).subscribe(() => {
+      droneSfx.play();
+    })
+
+    timer(7000).subscribe(() => {
       for (let i = 0; i < this.laneCount; i++) {
         this.lanes.push({ id: i + 1 })
       }
@@ -141,6 +160,10 @@ export class SquadronComponent implements OnInit, OnDestroy {
     for (let generator of this.propGenerators) {
       generator.unsubscribe();
     }
+
+    for (let audio of this.audios) {
+      audio.stop();
+    }
   }
 
   private readonly cloudImagePaths: string[] = [
@@ -153,6 +176,16 @@ export class SquadronComponent implements OnInit, OnDestroy {
   ];
 
   private readonly mascotImagePaths: string[] = [
+    'assets/props/dragoon-b-blue.png',
+    'assets/props/dragoon-b-orange.png',
+    'assets/props/dragoon-c-blue.png',
+    'assets/props/dragoon-egg-blue.png',
+    'assets/props/dragoon-egg-green.png',
+    'assets/props/dragoon-egg-orange.png',
+    'assets/props/dragoon-egg-pink.png',
+    'assets/props/dragoon-egg-purple.png',
+    'assets/props/dragoon-egg-red.png',
+    'assets/props/comfydant.png',
     'assets/props/kindred.png',
     'assets/props/lucub.png',
     'assets/props/pentomo.png',
