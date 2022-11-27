@@ -5,6 +5,9 @@
   <img *ngFor="let cloud of farBackgroundClouds" class="far-background-cloud" [src]="cloud.imagePath"
     [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
     [@farBackgroundCloud] (@farBackgroundCloud.done)="removeFarBackgroundCloud(cloud)">
+  <img *ngFor="let mascot of mascots" class="mascot" [src]="mascot.imagePath" [style.top.vh]="mascot.startTopVh"
+    [style.left.vw]="mascot.startLeftVw" [style.height.vh]="mascot.heightVh"
+    [@mascot]="{ value: ':enter', params: { deviation: mascot.deviationVw } }" (@mascot.done)="removeMascot(mascot)">
   <img *ngFor="let cloud of backgroundClouds" class="background-cloud" [src]="cloud.imagePath"
     [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
     [@backgroundCloud] (@backgroundCloud.done)="removeBackgroundCloud(cloud)">
@@ -18,4 +21,27 @@
   <img *ngFor="let cloud of foregroundClouds" class="foreground-cloud" [src]="cloud.imagePath"
     [style.top.vh]="cloud.startTopVh" [style.left.vw]="cloud.startLeftVw" [style.width.vw]="cloud.widthVw"
     [@foregroundCloud] (@foregroundCloud.done)="removeForegroundCloud(cloud)">
+</div>
+
+<div *ngIf="hintService.showHint" class="hint-container">
+  <div class="hint">
+    <p>
+      Because of the length of some messages, some of them won't be fully rendered in this page.
+    </p>
+    <p>
+      You can access the "Hangar" page using the sidebar to the right, where the messages can be scrolled
+    </p>
+    <p>
+      Also, you can click on the planes in the Hangar to view the image in full size
+    </p>
+    <p>
+      Enjoy!
+    </p>
+
+    <div class="actions" (click)="closeHint()">
+      <button class="hint-button">
+        Got it!
+      </button>
+    </div>
+  </div>
 </div>

@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { of, repeat, Subscription, switchMap, timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
+import { HintService } from 'src/app/services/hint.service';
 import Utils from 'src/app/utils/utils';
 import { Prop } from 'src/models/prop';
 
@@ -28,6 +29,12 @@ import { Prop } from 'src/models/prop';
         style({ transform: 'translateX(0)' }),
         animate('5s', style({ transform: 'translateX(150vw)' }))
       ])
+    ]),
+    trigger('mascot', [
+      transition(':enter', [
+        style({ transform: 'translate(0, 0)' }),
+        animate('10s', style({ transform: 'translate({{ deviation }}vw, -150vh)' }))
+      ], { params: { deviation: 30 } })
     ])
   ]
 })
@@ -39,21 +46,16 @@ export class SquadronComponent implements OnInit, OnDestroy {
   public farBackgroundClouds: Prop[] = [];
   public backgroundClouds: Prop[] = [];
   public foregroundClouds: Prop[] = [];
+  public mascots: Prop[] = [];
 
   private propGenerators: Subscription[] = [];
 
   lanes: any[] = [];
 
-  constructor(public randomizerService: DragoonRandomizerService) { }
+  constructor(public randomizerService: DragoonRandomizerService, public hintService: HintService) { }
 
   public ngOnInit(): void {
-    this.selenInFlight = true;
-
-    timer(1000).subscribe(() => {
-      for (let i = 0; i < this.laneCount; i++) {
-        this.lanes.push({ id: i + 1 })
-      }
-    })
+    // this.start();
 
     // Initial far background clouds
     for (let i = 0; i < 25; i++) {
@@ -72,17 +74,49 @@ export class SquadronComponent implements OnInit, OnDestroy {
       .pipe(switchMap(() => timer(Utils.getRandomDelay(1000, 10000))), repeat())
       .subscribe(() => this.foregroundClouds.push(this.getCloud(30, 40)));
 
-    this.propGenerators.push(farBackgroundCloudGenerator, backgroundCloudGenerator, foregroundCloudGenerator);
+    const mascotGenerator = of(null)
+      .pipe(switchMap(() => timer(Utils.getRandomDelay(10000, 15000))), repeat())
+      .subscribe(() => this.mascots.push(this.getMascot(10, 15)));
+
+    this.propGenerators.push(farBackgroundCloudGenerator, backgroundCloudGenerator, foregroundCloudGenerator, mascotGenerator);
   }
 
-  public getCloud(minHeightVh: number, maxHeightVh: number, startLeftVw: number | null = null): Prop {
+  public closeHint(): void {
+    this.hintService.closeHint();
+    this.start();
+  }
+
+  public start(): void {
+    this.selenInFlight = true;
+
+    timer(1000).subscribe(() => {
+      for (let i = 0; i < this.laneCount; i++) {
+        this.lanes.push({ id: i + 1 })
+      }
+    })
+  }
+
+  public getCloud(minWidthVw: number, maxWidthVw: number, startLeftVw: number | null = null): Prop {
     const index: number = Math.floor(Math.random() * this.cloudImagePaths.length);
-    const randomWidth: number = Math.random() * (maxHeightVh - minHeightVh) + minHeightVh;
+    const randomWidth: number = Math.random() * (maxWidthVw - minWidthVw) + minWidthVw;
     const randomCloud: Prop = {
       imagePath: this.cloudImagePaths[index],
       startLeftVw: startLeftVw ?? -randomWidth,
       startTopVh: Math.random() * 100,
       widthVw: randomWidth,
+      deviationVw: Math.random() * 20 + 10,
+    }
+    return randomCloud;
+  }
+
+  public getMascot(minHeightVh: number, maxHeightVh: number): Prop {
+    const index: number = Math.floor(Math.random() * this.cloudImagePaths.length);
+    const randomHeight: number = Math.random() * (maxHeightVh - minHeightVh) + minHeightVh;
+    const randomCloud: Prop = {
+      imagePath: this.mascotImagePaths[index],
+      startLeftVw: Math.random() * 100,
+      startTopVh: 100 + randomHeight,
+      heightVh: randomHeight,
     }
     return randomCloud;
   }
@@ -96,8 +130,11 @@ export class SquadronComponent implements OnInit, OnDestroy {
   }
 
   public removeForegroundCloud(cloudToRemove: Prop): void {
-    console.log('removing');
     this.foregroundClouds = [...this.foregroundClouds.filter(cloud => cloud !== cloudToRemove)];
+  }
+
+  public removeMascot(mascotToRemove: Prop): void {
+    this.mascots = [...this.mascots.filter(mascot => mascot !== mascotToRemove)];
   }
 
   public ngOnDestroy(): void {
@@ -113,5 +150,19 @@ export class SquadronComponent implements OnInit, OnDestroy {
     'assets/props/background/cloud4.png',
     'assets/props/background/cloud5.png',
     'assets/props/background/cloud6.png',
+  ];
+
+  private readonly mascotImagePaths: string[] = [
+    'assets/props/kindred.png',
+    'assets/props/lucub.png',
+    'assets/props/pentomo.png',
+    'assets/props/phantomo.png',
+    'assets/props/pomudachi.png',
+    'assets/props/quilldren.png',
+    'assets/props/renvader.png',
+    'assets/props/scarling.png',
+    'assets/props/stargazer.png',
+    'assets/props/weewa.png',
+    'assets/props/yaminion.png'
   ];
 }

@@ -1,3 +1,5 @@
+@import '../../../styles/colors.scss';
+
 :host {
   display: block;
   width: calc(100vw - 96px);
@@ -10,6 +12,38 @@
   animation: background-slide 60s linear infinite;
   position: absolute;
   overflow: hidden;
+
+  .hint-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 20vw;
+    background-color: $dark-grey;
+    border-radius: 5px;
+
+    .hint {
+      font-size: 20px;
+      padding: 20px;
+      color: white;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .hint-button {
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        background-color: $selen-purple;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
 
   .lane-container {
     display: flex;
@@ -32,6 +66,11 @@
       z-index: 0;
       position: absolute;
       opacity: 0.95;
+    }
+
+    .mascot {
+      z-index: 0;
+      position: absolute;
     }
 
     .foreground-cloud {
