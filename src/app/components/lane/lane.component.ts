@@ -15,25 +15,30 @@ export class LaneComponent implements AfterViewInit, OnDestroy {
   @ViewChild(DragoonComponent) dragoonComponent!: DragoonComponent;
   @Input() laneHeightPx: number = 190;
   dragoons: Dragoon[] = [];
-  intervalSubscription: Subscription | null = null;
+  subscriptions: Subscription[] = [];
 
   constructor(private randomizerService: DragoonRandomizerService) { }
 
   public ngAfterViewInit(): void {
     // First plane delay
-    timer(Utils.getRandomDelay(0, 5000)).subscribe(() => {
+    const initTimer = timer(Utils.getRandomDelay(0, 5000)).subscribe(() => {
       this.addDragoon();
 
       // Delay between planes
-      this.intervalSubscription = of(null)
+      const intervalSubscription = of(null)
         .pipe(switchMap(() => timer(Utils.getRandomDelay(7000, 10000))), repeat(), filter(() => !document.hidden))
         .subscribe(() => this.addDragoon());
+
+      this.subscriptions.push(intervalSubscription);
     });
 
+    this.subscriptions.push(initTimer);
   }
 
   public ngOnDestroy(): void {
-    this.intervalSubscription?.unsubscribe();
+    for (let subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
   }
 
   public addDragoon(): void {

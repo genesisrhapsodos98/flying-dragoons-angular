@@ -49,7 +49,7 @@ export class SquadronComponent implements OnInit, OnDestroy {
   public foregroundClouds: Prop[] = [];
   public mascots: Prop[] = [];
 
-  private propGenerators: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
   private audios: Howl[] = [];
 
@@ -83,7 +83,7 @@ export class SquadronComponent implements OnInit, OnDestroy {
       .pipe(switchMap(() => timer(Utils.getRandomDelay(7000, 12000))), repeat(), filter(() => !document.hidden))
       .subscribe(() => this.mascots.push(this.getMascot(10, 15)));
 
-    this.propGenerators.push(farBackgroundCloudGenerator, backgroundCloudGenerator, foregroundCloudGenerator, mascotGenerator);
+    this.subscriptions.push(farBackgroundCloudGenerator, backgroundCloudGenerator, foregroundCloudGenerator, mascotGenerator);
   }
 
   public closeHint(): void {
@@ -94,7 +94,6 @@ export class SquadronComponent implements OnInit, OnDestroy {
   public start(): void {
     this.selenInFlight = true;
 
-
     const bgMusic = new Howl({ src: 'assets/audio/bg.mp3', volume: 0.4 });
     const jetSfx = new Howl({ src: 'assets/audio/jet.mp3', volume: 0.1 });
     const droneSfx = new Howl({ src: 'assets/audio/drone.mp3', volume: 0.05, loop: true });
@@ -104,15 +103,17 @@ export class SquadronComponent implements OnInit, OnDestroy {
     jetSfx.play();
     bgMusic.play();
 
-    timer(1000).subscribe(() => {
+    const audioTimer = timer(1000).subscribe(() => {
       droneSfx.play();
     })
 
-    timer(7000).subscribe(() => {
+    const laneTimer = timer(7000).subscribe(() => {
       for (let i = 0; i < this.laneCount; i++) {
         this.lanes.push({ id: i + 1 })
       }
     })
+
+    this.subscriptions.push(audioTimer, laneTimer);
   }
 
   public getCloud(minWidthVw: number, maxWidthVw: number, startLeftVw: number | null = null): Prop {
@@ -157,8 +158,8 @@ export class SquadronComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    for (let generator of this.propGenerators) {
-      generator.unsubscribe();
+    for (let subscription of this.subscriptions) {
+      subscription.unsubscribe();
     }
 
     for (let audio of this.audios) {
