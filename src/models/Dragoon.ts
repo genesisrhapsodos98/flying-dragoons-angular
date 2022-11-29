@@ -3,4 +3,6 @@ export interface Dragoon {
   name: string;
   message: string;
   imagePath: string;
+  customBannerPath?: string;
+  routerLink: string[];
 }

@@ -12,6 +12,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SelenLaneComponent } from './components/selen-lane/selen-lane.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SquadronComponent } from './components/squadron/squadron.component';
+import { DaemonsAreRealComponent } from './components/daemons-are-real/daemons-are-real.component';
+import { EmberNuggetLaneComponent } from './components/ember-nugget-lane/ember-nugget-lane.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SquadronComponent } from './components/squadron/squadron.component';
     HangarComponent,
     CreditsComponent,
     DragoonViewerComponent,
-    SelenLaneComponent
+    SelenLaneComponent,
+    DaemonsAreRealComponent,
+    EmberNuggetLaneComponent
   ],
   imports: [
     BrowserModule,

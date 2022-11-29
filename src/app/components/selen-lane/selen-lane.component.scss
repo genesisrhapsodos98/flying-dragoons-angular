@@ -12,6 +12,7 @@
     .selen-prop {
       position: absolute;
       height: var(--plane-height);
+      user-select: none;
     }
 
     .ember-prop {
@@ -19,6 +20,7 @@
       height: calc(var(--plane-height) * 0.8);
       left: 250px;
       top: -95px;
+      user-select: none;
     }
   }
 
@@ -31,6 +33,7 @@
       position: relative;
       min-height: var(--plane-height);
       display: inline-block;
+      user-select: none;
 
       .hbd-plane-propeller {
         z-index: 3;

@@ -19,7 +19,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    max-width: 20vw;
+    max-width: 30vw;
     background-color: $dark-grey;
     border-radius: 5px;
 
@@ -60,6 +60,7 @@
       animation: sun-slide 5s linear;
       right: 40px;
       top: 40px;
+      user-select: none;
     }
 
     .far-background-cloud,
@@ -67,17 +68,20 @@
       z-index: 0;
       position: absolute;
       opacity: 0.95;
+      user-select: none;
     }
 
     .mascot {
       z-index: 0;
       position: absolute;
+      user-select: none;
     }
 
     .foreground-cloud {
       position: absolute;
       opacity: 0.95;
       z-index: 2;
+      user-select: none;
     }
 
     fd-selen-lane,

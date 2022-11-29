@@ -16,6 +16,8 @@
   <fd-selen-lane [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx" [inFlight]="selenInFlight">
   </fd-selen-lane>
   <fd-lane *ngFor="let lane of lanes" [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx"></fd-lane>
+  <fd-ember-nugget-lane [laneHeightPx]="laneHeightPx" [style.height.px]="laneHeightPx" [inFlight]="emberNuggetInFlight">
+  </fd-ember-nugget-lane>
 
   <!-- Foreground -->
   <img *ngFor="let cloud of foregroundClouds" class="foreground-cloud" [src]="cloud.imagePath"

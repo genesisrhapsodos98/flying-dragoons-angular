@@ -1,5 +1,6 @@
 <div *ngIf="dragoon" class="dragoon" [class.in-hangar]="inHangar" [style.--plane-height]="planeHeightPx + 'px'"
-  [@flying]="inFlight ? 'flight' : 'standby'" (@flying.done)="completeFlight($event)">
+  [@flying]="inFlight ? 'flight' : 'standby'" (@flying.done)="completeFlight($event)"
+  [class.pointer]="dragoon.routerLink && dragoon.routerLink.length > 0" [routerLink]="dragoon.routerLink">
   <div class="plane" (mouseenter)="displayName()" (mouseleave)="hideName()">
     <img *ngIf="!inHangar" class="plane-propeller" src="assets/props/spinner.gif" draggable="false">
     <img class="plane-body" [src]="dragoon.imagePath" draggable="false">
@@ -10,7 +11,7 @@
     </div>
   </div>
   <div class="banner">
-    <img class="banner-img" src="assets/props/banner.png" draggable="false">
+    <img class="banner-img" [src]="dragoon.customBannerPath ?? 'assets/props/banner.png'" draggable="false">
     <div class="banner-message">
       <p [ngClass]="{ 'scroll': inHangar, 'ellipsis': !inHangar }">
         {{ dragoon.message }}

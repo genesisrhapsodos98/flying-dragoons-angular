@@ -1,0 +1,143 @@
+:host {
+  .dar {
+    background-image: url("../../../assets/dar/hitmarkr.png");
+    color: #EEE;
+    font-family: Arial, sans-serif;
+    font-size: 14pt;
+    margin: 0;
+    padding: 1em 0;
+
+    main {
+      margin: 0 200px 0 200px;
+    }
+
+    p {
+      margin: 0 0 1.0em 0;
+    }
+
+
+
+    header img {
+      display: block;
+      margin: 2em auto;
+      width: 100%;
+    }
+
+    article {
+      background-color: #000;
+      border-radius: 30px;
+      padding: 1.5em 1.5em 0.5em 1.5em;
+      margin-bottom: 3em;
+      text-align: center;
+
+      a:hover,
+      a:active {
+        color: #44BBFF;
+      }
+
+      small {
+        font-size: 8pt;
+      }
+
+      .dl {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        background-color: #BF9AED;
+        border-radius: 30px;
+        color: #FFF;
+        display: inline-block;
+        font-size: 12pt;
+        font-weight: bold;
+        margin: 1em 0;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        user-select: none;
+
+        &:hover {
+          background-color: #A067E4;
+          color: #EEE;
+        }
+
+        &:active {
+          background-color: #7726D9;
+          color: #999;
+        }
+      }
+    }
+
+    figure {
+      display: block;
+      margin: 0 0 2.5em 0;
+
+      &::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    }
+
+    .banner img {
+      width: 100%;
+    }
+
+    .gallery img {
+      border-radius: 30px;
+      display: inline-block;
+      float: left;
+      width: 25%;
+    }
+
+    .webring {
+      font-size: 10pt;
+      margin-bottom: 1em;
+    }
+
+    .middle {
+      display: inline;
+      vertical-align: middle;
+    }
+
+    @media only screen and (max-width:1200px) {
+      main {
+        margin: 0;
+      }
+
+      header img {
+        content: url("../../../assets/dar/logo.png");
+        max-width: 600px;
+      }
+
+      article {
+        border-radius: 0;
+        text-align: justify;
+        padding: 1em 2em;
+      }
+
+      article h2 {
+        text-align: center;
+      }
+
+      article .dl {
+        display: block;
+      }
+
+      .banner img {
+        width: 97%;
+        margin: 0 1em;
+      }
+
+      .gallery img {
+        width: 50%;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .webring tbody .icon {
+        display: none;
+      }
+    }
+  }
+}

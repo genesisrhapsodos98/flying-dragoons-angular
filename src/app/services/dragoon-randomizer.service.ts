@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Dragoon } from 'src/models/dragoon';
 
@@ -7,6 +7,7 @@ import { DragoonsService } from './dragoons.service';
 @Injectable()
 export class DragoonRandomizerService {
   loaded: boolean = false;
+  finished: EventEmitter<void> = new EventEmitter<void>();
 
   dragoons$: BehaviorSubject<Dragoon[]> = new BehaviorSubject<Dragoon[]>([]);
   get dragoons(): Dragoon[] {
@@ -23,6 +24,7 @@ export class DragoonRandomizerService {
 
   public getRandomDragoon(): Dragoon | null {
     if (this.dragoons.length === 0) {
+      this.finished.emit();
       return null;
     }
     const index = Math.floor(Math.random() * this.dragoons.length);

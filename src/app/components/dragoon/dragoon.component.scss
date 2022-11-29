@@ -10,6 +10,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
 
+    &.pointer {
+      cursor: pointer;
+    }
+
     &:not(.in-hangar) {
       left: 100vw;
     }

@@ -1,0 +1,18 @@
+:host {
+  --plane-height: 190px;
+
+  position: absolute;
+  width: 100vw;
+
+  .ember-nugget {
+    position: absolute;
+    height: var(--plane-height);
+    left: 100vw;
+
+    .ember-nugget-prop {
+      position: absolute;
+      height: var(--plane-height);
+      user-select: none;
+    }
+  }
+}

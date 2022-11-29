@@ -30,6 +30,14 @@ export class SidenavComponent {
   @Input() menuItems: MenuItem[] = [];
   showLabels: boolean = false;
 
+  public get startMenuItems(): MenuItem[] {
+    return this.menuItems.filter(item => item.position === 'start')
+  }
+
+  public get endMenuItems(): MenuItem[] {
+    return this.menuItems.filter(item => item.position === 'end')
+  }
+
   setShowLabels(value: boolean): void {
     this.showLabels = value;
   }

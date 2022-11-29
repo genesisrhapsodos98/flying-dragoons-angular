@@ -1,7 +1,15 @@
 <ul class="nav-list" (mouseenter)="setShowLabels(true)" (mouseleave)="setShowLabels(false)"
   [@slide]="showLabels ? 'open' : 'closed'">
   <li class="nav-item" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-    *ngFor="let item of menuItems">
+    *ngFor="let item of startMenuItems">
+    <a class="nav-link">
+      <img class="nav-icon" draggable="false" [src]="item.iconPath">
+      <span *ngIf="showLabels" [@fade]>{{ item.label }}</span>
+    </a>
+  </li>
+  <div class="spacer"></div>
+  <li class="nav-item" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+    *ngFor="let item of endMenuItems">
     <a class="nav-link">
       <img class="nav-icon" draggable="false" [src]="item.iconPath">
       <span *ngIf="showLabels" [@fade]>{{ item.label }}</span>

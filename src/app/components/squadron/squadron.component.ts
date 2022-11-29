@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Howl } from 'howler';
-import { filter, of, repeat, Subscription, switchMap, timer } from 'rxjs';
+import { delay, filter, of, repeat, Subscription, switchMap, timer } from 'rxjs';
 import { DragoonRandomizerService } from 'src/app/services/dragoon-randomizer.service';
 import { HintService } from 'src/app/services/hint.service';
 import Utils from 'src/app/utils/utils';
@@ -42,7 +42,9 @@ import { Prop } from 'src/models/prop';
 export class SquadronComponent implements OnInit, OnDestroy {
   public readonly laneCount: number = 4;
   public readonly laneHeightPx: number = 190;
+
   public selenInFlight: boolean = false;
+  public emberNuggetInFlight: boolean = false;
 
   public farBackgroundClouds: Prop[] = [];
   public backgroundClouds: Prop[] = [];
@@ -107,13 +109,17 @@ export class SquadronComponent implements OnInit, OnDestroy {
       droneSfx.play();
     })
 
-    const laneTimer = timer(7000).subscribe(() => {
+    const laneTimer = timer(9000).subscribe(() => {
       for (let i = 0; i < this.laneCount; i++) {
         this.lanes.push({ id: i + 1 })
       }
     })
 
-    this.subscriptions.push(audioTimer, laneTimer);
+    const finished = this.randomizerService.finished.pipe(delay(4000)).subscribe(() => {
+      this.emberNuggetInFlight = true;
+    });
+
+    this.subscriptions.push(audioTimer, laneTimer, finished);
   }
 
   public getCloud(minWidthVw: number, maxWidthVw: number, startLeftVw: number | null = null): Prop {
